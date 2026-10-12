@@ -1,0 +1,108 @@
+{
+  "platforms": [
+    {
+      "id": "android",
+      "name": "Android",
+      "status": "live",
+      "requirements": {
+        "vi": "Điện thoại, máy tính bảng và Android TV",
+        "en": "Phones, tablets and Android TV"
+      },
+      "links": [
+        {
+          "label": {
+            "vi": "Google Play",
+            "en": "Google Play"
+          },
+          "url": "https://play.google.com/store/apps/details?id=tss.t.tsiptv"
+        }
+      ]
+    },
+    {
+      "id": "ios",
+      "name": "iOS",
+      "status": "soon",
+      "requirements": {
+        "vi": "iPhone và iPad",
+        "en": "iPhone and iPad"
+      },
+      "links": []
+    },
+    {
+      "id": "macos",
+      "name": "macOS",
+      "status": "live",
+      "requirements": {
+        "vi": "Mac Apple Silicon (M1 trở lên)",
+        "en": "Apple Silicon Macs (M1 and later)"
+      },
+      "hint": {
+        "vi": "Lần đầu mở: System Settings > Privacy & Security > Open Anyway.",
+        "en": "First launch: System Settings > Privacy & Security > Open Anyway."
+      },
+      "links": [
+        {
+          "label": {
+            "vi": "Tải .dmg",
+            "en": "Download .dmg"
+          },
+          "url": "https://github.com/tuandv1405/IPTVMultiplatform/releases/download/desktop-1.1.3/TS-IPTV-1.1.3-macOS-arm64.dmg",
+          "size": "201 MB"
+        }
+      ],
+      "version": "1.1.3",
+      "published": "2026-10-12",
+      "checksums": "https://github.com/tuandv1405/IPTVMultiplatform/releases/download/desktop-1.1.3/SHA256SUMS.txt",
+      "notes": "https://github.com/tuandv1405/IPTVMultiplatform/releases/tag/desktop-1.1.3"
+    },
+    {
+      "id": "windows",
+      "name": "Windows",
+      "status": "live",
+      "requirements": {
+        "vi": "Windows 10/11, 64-bit",
+        "en": "Windows 10/11, 64-bit"
+      },
+      "links": [
+        {
+          "label": {
+            "vi": "Cài đặt (.exe)",
+            "en": "Installer (.exe)"
+          },
+          "url": "https://github.com/tuandv1405/IPTVMultiplatform/releases/download/desktop-1.1.2/TS-IPTV-1.1.2-Setup.exe",
+          "size": "201 MB"
+        },
+        {
+          "label": {
+            "vi": "MSI",
+            "en": "MSI"
+          },
+          "url": "https://github.com/tuandv1405/IPTVMultiplatform/releases/download/desktop-1.1.2/TS-IPTV-1.1.2-Windows-x64.msi",
+          "size": "202 MB"
+        },
+        {
+          "label": {
+            "vi": "Bản portable (.zip)",
+            "en": "Portable (.zip)"
+          },
+          "url": "https://github.com/tuandv1405/IPTVMultiplatform/releases/download/desktop-1.1.2/TS-IPTV-1.1.2-Windows-x64-portable.zip",
+          "size": "201 MB"
+        }
+      ],
+      "version": "1.1.2",
+      "published": "2026-10-11",
+      "checksums": "https://github.com/tuandv1405/IPTVMultiplatform/releases/download/desktop-1.1.2/SHA256SUMS.txt",
+      "notes": "https://github.com/tuandv1405/IPTVMultiplatform/releases/tag/desktop-1.1.2"
+    },
+    {
+      "id": "tv",
+      "name": "Smart TV",
+      "status": "soon",
+      "requirements": {
+        "vi": "LG webOS, Samsung Tizen",
+        "en": "LG webOS, Samsung Tizen"
+      },
+      "links": []
+    }
+  ]
+}
