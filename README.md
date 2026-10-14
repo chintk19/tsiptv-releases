@@ -1,34 +1,55 @@
-# TS IPTV — trang tải về
+# TS IPTV — trang tải về và các bản phát hành
 
-Trang tĩnh liệt kê đường dẫn tải TS IPTV cho từng nền tảng. Không có mã app ở đây: các file cài đặt nằm trên
-[GitHub Releases](https://github.com/tuandv1405/IPTVMultiplatform/releases) và Google Play; trang này chỉ trỏ tới.
+Repo **công khai** `chintk19/tsiptv-releases`. Không có mã app ở đây (repo app `IPTVMultiplatform` là repo
+riêng tư). Repo này chứa:
 
-- URL: `https://tsiptv-download.web.app/` (Firebase Hosting, site `tsiptv-download` trong project `tsiptv-8bdd6`).
-- Dữ liệu duy nhất: [`public/releases.json`](public/releases.json). Trang (`public/index.html` + `assets/app.js`)
-  đọc file này và hiển thị song ngữ Việt/Anh; nền tảng của người xem được đưa lên đầu.
+- **GitHub Releases** của bản desktop (`desktop-<v>`: `Setup.exe`, `.msi`, `.zip`, `.dmg`, `SHA256SUMS.txt`).
+  CI của repo app build và đăng các bản này (`.github/workflows/desktop-release.yml` và
+  `docs/ci-desktop-release.md` bên repo app).
+- **Trang tải về** `https://tsiptv-download.web.app/` (Firebase Hosting, site `tsiptv-download` trong project
+  `tsiptv-8bdd6`). Dữ liệu duy nhất: [`public/releases.json`](public/releases.json). Trang (`public/index.html` +
+  `assets/app.js`) đọc file này và hiển thị song ngữ Việt/Anh; nền tảng của người xem được đưa lên đầu.
+
+Không link nào trên trang được trỏ tới repo app: repo đó riêng tư nên người xem sẽ gặp trang 404.
+`scripts/sync_github.py` cảnh báo nếu `releases.json` còn link như vậy.
 
 | Nền tảng | Nguồn link | Cập nhật bằng |
 |---|---|---|
 | Android | Google Play `tss.t.tsiptv` | Sửa tay |
 | iOS | — (`"status": "soon"`) | Sửa tay khi có link App Store |
-| macOS | `.dmg` trên GitHub Releases | `scripts/sync_github.py` |
-| Windows | `Setup.exe`, `.msi`, `.zip` trên GitHub Releases | `scripts/sync_github.py` |
+| macOS | `.dmg` trong Releases của repo này | CI của repo app (hoặc `scripts/sync_github.py`) |
+| Windows | `Setup.exe`, `.msi`, `.zip` trong Releases của repo này | CI của repo app (hoặc `scripts/sync_github.py`) |
 | Smart TV | — (`"status": "soon"`) | Sửa tay khi có link LG / Samsung |
 
 ## Sau mỗi bản phát hành desktop
 
-1. Đăng GitHub Release (tag `desktop-<v>`, kéo thả các file) như trong `docs/desktop-windows-release.md` của
-   repo app.
-2. Cập nhật link:
+Thường không phải làm gì: đẩy tag `desktop-<v>` lên repo app, CI build Windows và macOS, tạo Release ở repo
+này, chạy `scripts/sync_github.py`, commit `public/releases.json` và deploy trang.
 
-   ```bash
-   python scripts/sync_github.py --check   # xem thay đổi
-   python scripts/sync_github.py           # ghi public/releases.json
-   ```
+Làm tay (khi CI không deploy được trang, hoặc sau khi sửa Release bằng tay):
 
-   Script lấy bản **đã publish** mới nhất có file của từng nền tảng (Windows và macOS có thể khác phiên bản).
-3. Triển khai: `firebase deploy --only hosting`
-4. Commit `public/releases.json`.
+```bash
+git pull                                 # lấy releases.json mà CI đã commit
+python scripts/sync_github.py --check    # xem thay đổi
+python scripts/sync_github.py            # ghi public/releases.json
+firebase deploy --only hosting
+git commit -am "Download page: desktop-<v>" && git push
+```
+
+Script lấy bản **đã publish** mới nhất có file của từng nền tảng trong Releases của repo này (Windows và macOS
+có thể khác phiên bản). Biến môi trường `RELEASES_REPO` đổi repo nguồn; `GITHUB_TOKEN` (tuỳ chọn) để không bị
+giới hạn số lần gọi API.
+
+## Chép một bản cũ từ repo app sang (một lần, trước khi repo app thành riêng tư)
+
+Chỉ cần khi muốn giữ một bản không build lại bằng CI. Cần [GitHub CLI](https://cli.github.com/) đã đăng nhập:
+
+```bash
+tag=desktop-1.1.3
+gh release download $tag --repo tuandv1405/IPTVMultiplatform --dir tmp/$tag
+gh release create $tag tmp/$tag/* --repo chintk19/tsiptv-releases --title "TS IPTV ${tag#desktop-} (desktop)"   --notes "TS IPTV desktop ${tag#desktop-}"
+python scripts/sync_github.py
+```
 
 ## Sửa tay `releases.json`
 
