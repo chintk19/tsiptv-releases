@@ -2,44 +2,161 @@
 <html lang="vi">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Tải TS IPTV</title>
-<meta name="description" content="Tải TS IPTV cho Android, iOS, macOS, Windows và Smart TV. / Download TS IPTV for Android, iOS, macOS, Windows and Smart TV.">
+<meta name="description" content="Tải TS IPTV cho Android, Android TV, Windows và macOS. iPhone và Smart TV sắp ra mắt. / Download TS IPTV for Android, Android TV, Windows and macOS.">
 <meta name="theme-color" content="#03041d">
+<meta property="og:title" content="Tải TS IPTV / Download TS IPTV">
+<meta property="og:description" content="Android · Android TV · Windows · macOS">
+<meta property="og:image" content="https://tsiptv-download.web.app/assets/media/hero-tv.webp">
 <link rel="icon" href="/assets/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preload" as="image" href="/assets/media/hero-tv.webp">
 <link rel="stylesheet" href="/assets/style.css">
+<script>document.documentElement.classList.add("js");setTimeout(function(){if(!window.tsiptvDownload)document.documentElement.classList.remove("js")},3000);</script>
 </head>
 <body>
+
+<div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+<div class="grid-bg" aria-hidden="true"></div>
+
 <header class="top">
-  <a class="brand" href="https://tsiptv-8bdd6.web.app/">
-    <img src="/assets/app-icon.png" alt="" width="36" height="36">
-    <span>TS IPTV</span>
-  </a>
-  <div class="lang" role="group" aria-label="Language">
-    <button type="button" data-lang="vi" aria-pressed="true">VI</button>
-    <button type="button" data-lang="en" aria-pressed="false">EN</button>
+  <div class="top-inner">
+    <a class="brand" href="https://tsiptv-8bdd6.web.app/">
+      <img src="/assets/app-icon.png" alt="" width="36" height="36">
+      <span>TS IPTV</span>
+    </a>
+    <nav class="top-links" aria-label="Links">
+      <a href="#all" data-i18n="navAll">Tất cả nền tảng</a>
+      <a href="#verify" data-i18n="navVerify">Kiểm tra file</a>
+      <a href="https://tsiptv-8bdd6.web.app/" data-i18n="site">Trang chủ</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="vi" aria-pressed="true">VI</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
   </div>
 </header>
 
 <main>
-  <h1 data-i18n="title">Tải TS IPTV</h1>
-  <p class="lead" data-i18n="lead">Trình phát IPTV cho danh sách phát của riêng bạn. Chọn thiết bị để tải bản mới nhất.</p>
+  <!-- Hero: the visitor's platform first, with its download button -->
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow rise" data-i18n="eyebrow">Tải về miễn phí</p>
+      <h1 class="rise" style="--d:80ms"><span data-i18n="titleA">Tải</span> <span class="grad">TS IPTV</span></h1>
+      <p class="lead rise" style="--d:160ms" data-i18n="lead">Trình phát IPTV cho danh sách phát của riêng bạn, trên điện thoại, TV và máy tính.</p>
 
-  <div id="platforms" class="grid" aria-live="polite">
-    <p class="dim" data-i18n="loading">Đang tải danh sách…</p>
-  </div>
+      <div id="smart" class="smart rise" style="--d:240ms" aria-live="polite">
+        <div class="smart-skeleton"><span></span><span></span></div>
+      </div>
 
-  <p class="dim small" data-i18n="checksumsHint">Bản desktop kèm file SHA256SUMS.txt để kiểm tra file tải về.</p>
+      <ul class="os-row rise" style="--d:320ms" aria-label="Platforms">
+        <li data-os="android"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-android"/></svg>Android</li>
+        <li data-os="tv"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-tv"/></svg>Android TV</li>
+        <li data-os="windows"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-windows"/></svg>Windows</li>
+        <li data-os="macos"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-macos"/></svg>macOS</li>
+        <li data-os="ios" class="soon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-ios"/></svg>iPhone</li>
+      </ul>
+    </div>
+
+    <div class="scene rise" style="--d:200ms" aria-hidden="true">
+      <div class="orbit">
+        <span class="chip c1"><svg viewBox="0 0 24 24"><use href="#i-android"/></svg></span>
+        <span class="chip c2"><svg viewBox="0 0 24 24"><use href="#i-windows"/></svg></span>
+        <span class="chip c3"><svg viewBox="0 0 24 24"><use href="#i-macos"/></svg></span>
+        <span class="chip c4"><svg viewBox="0 0 24 24"><use href="#i-tv"/></svg></span>
+      </div>
+      <div class="tv">
+        <div class="screen"><video src="/assets/media/hero-tv.mp4" poster="/assets/media/hero-tv.webp" muted playsinline loop autoplay preload="metadata"></video></div>
+        <div class="stand"></div>
+      </div>
+      <div class="phone">
+        <div class="screen"><video src="/assets/media/hero-phone.mp4" poster="/assets/media/hero-phone.webp" muted playsinline loop autoplay preload="metadata"></video></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Every platform, from /releases.json -->
+  <section id="all" class="section">
+    <div class="section-head reveal">
+      <p class="eyebrow" data-i18n="allEyebrow">Mọi thiết bị</p>
+      <h2 data-i18n="allTitle">Chọn nền tảng của bạn</h2>
+    </div>
+    <div id="platforms" class="grid" aria-live="polite">
+      <p class="dim" data-i18n="loading">Đang tải danh sách…</p>
+    </div>
+  </section>
+
+  <!-- Three steps -->
+  <section class="section">
+    <div class="section-head reveal">
+      <p class="eyebrow" data-i18n="stepsEyebrow">Bắt đầu</p>
+      <h2 data-i18n="stepsTitle">Ba bước là xem được</h2>
+    </div>
+    <ol class="steps">
+      <li class="step reveal">
+        <span class="step-ico"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0-4.5-4.5M12 15l4.5-4.5M4 19h16"/></svg></span>
+        <h3 data-i18n="s1t">Tải và cài</h3>
+        <p data-i18n="s1p">Chọn nền tảng ở trên. Android cài từ Google Play, máy tính tải bộ cài.</p>
+      </li>
+      <li class="step reveal" style="--d:100ms">
+        <span class="step-ico"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></span>
+        <h3 data-i18n="s2t">Thêm danh sách của bạn</h3>
+        <p data-i18n="s2p">Dán link M3U hoặc chọn file. TS IPTV không kèm sẵn kênh nào.</p>
+      </li>
+      <li class="step reveal" style="--d:200ms">
+        <span class="step-ico"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M10 9l4 2.5-4 2.5z"/></svg></span>
+        <h3 data-i18n="s3t">Xem, hoặc phát lên TV</h3>
+        <p data-i18n="s3p">Chạm biểu tượng TV trong trình phát để chuyển kênh lên Android TV.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Checksums -->
+  <section id="verify" class="section">
+    <div class="verify reveal">
+      <div>
+        <p class="eyebrow" data-i18n="verifyEyebrow">An toàn</p>
+        <h2 data-i18n="verifyTitle">Kiểm tra file tải về</h2>
+        <p class="dim" data-i18n="checksumsHint">Bản desktop kèm file SHA256SUMS.txt. So mã băm của file bạn tải với mã trong file đó.</p>
+      </div>
+      <div class="code-tabs">
+        <div class="tabs" role="tablist">
+          <button type="button" role="tab" aria-selected="true" data-code="win">Windows</button>
+          <button type="button" role="tab" aria-selected="false" data-code="mac">macOS</button>
+        </div>
+        <pre data-code-pane="win"><code>Get-FileHash .\TS-IPTV-*-Setup.exe -Algorithm SHA256</code></pre>
+        <pre data-code-pane="mac" hidden><code>shasum -a 256 TS-IPTV-*-macOS-arm64.dmg</code></pre>
+        <button type="button" class="copy" data-i18n="copy">Sao chép</button>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer>
-  <a href="https://tsiptv-8bdd6.web.app/" data-i18n="site">Trang chủ</a>
-  <span aria-hidden="true">·</span>
-  <a href="https://tsiptv-8bdd6.web.app/privacy/" data-i18n="privacy">Quyền riêng tư</a>
-  <span aria-hidden="true">·</span>
-  <a href="https://github.com/chintk19/tsiptv-releases/releases" data-i18n="allReleases">Tất cả bản phát hành</a>
+<footer class="foot">
+  <div class="foot-inner">
+    <a class="brand" href="https://tsiptv-8bdd6.web.app/"><img src="/assets/app-icon.png" alt="" width="28" height="28"><span>TS IPTV</span></a>
+    <nav>
+      <a href="https://tsiptv-8bdd6.web.app/" data-i18n="site">Trang chủ</a>
+      <a href="https://tsiptv-8bdd6.web.app/guides/" data-i18n="guides">Hướng dẫn</a>
+      <a href="https://tsiptv-8bdd6.web.app/privacy/" data-i18n="privacy">Quyền riêng tư</a>
+      <a href="https://github.com/chintk19/tsiptv-releases/releases" data-i18n="allReleases">Tất cả bản phát hành</a>
+    </nav>
+    <p class="dim small" data-i18n="legal">TS IPTV không cung cấp kênh hay nội dung. Google Play và logo Google Play là nhãn hiệu của Google LLC.</p>
+  </div>
 </footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<!-- Platform glyphs: simple shapes drawn for this page (no third-party logos except the Google Play badge). -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-android" viewBox="0 0 24 24"><path fill="currentColor" d="M7 9.5h10v7.2a1.3 1.3 0 0 1-1.3 1.3H15v2.6a1.2 1.2 0 0 1-2.4 0V18h-1.2v2.6a1.2 1.2 0 0 1-2.4 0V18h-.7A1.3 1.3 0 0 1 7 16.7zM4.6 9.5a1.2 1.2 0 0 1 1.2 1.2v4.4a1.2 1.2 0 0 1-2.4 0v-4.4a1.2 1.2 0 0 1 1.2-1.2m14.8 0a1.2 1.2 0 0 1 1.2 1.2v4.4a1.2 1.2 0 0 1-2.4 0v-4.4a1.2 1.2 0 0 1 1.2-1.2M7 8.7A5 5 0 0 1 9.6 4.6L8.8 3.2a.3.3 0 0 1 .5-.3l.8 1.4a5.2 5.2 0 0 1 3.8 0l.8-1.4a.3.3 0 0 1 .5.3l-.8 1.4A5 5 0 0 1 17 8.7zm3-2a.6.6 0 1 0 0 1.2.6.6 0 0 0 0-1.2m4 0a.6.6 0 1 0 0 1.2.6.6 0 0 0 0-1.2"/></symbol>
+  <symbol id="i-windows" viewBox="0 0 24 24"><path fill="currentColor" d="M3 3h8.5v8.5H3zm9.5 0H21v8.5h-8.5zM3 12.5h8.5V21H3zm9.5 0H21V21h-8.5z"/></symbol>
+  <symbol id="i-macos" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" d="M4 5.5A1.5 1.5 0 0 1 5.5 4h13A1.5 1.5 0 0 1 20 5.5V15H4z"/><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" d="M2 18.5h20"/></symbol>
+  <symbol id="i-ios" viewBox="0 0 24 24"><rect x="6.5" y="2" width="11" height="20" rx="2.8" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+  <symbol id="i-tv" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8 21h8" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></symbol>
+</svg>
 
 <script src="/assets/app.js"></script>
 </body>

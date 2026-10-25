@@ -1,0 +1,9 @@
+# Media must never get line-ending conversion (core.autocrlf on Windows corrupts them otherwise).
+*.png binary
+*.jpg binary
+*.webp binary
+*.gif binary
+*.ico binary
+*.mp4 binary
+*.webm binary
+*.svg text eol=lf
